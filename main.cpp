@@ -41,9 +41,30 @@ int main() {
 
 
 	//Prints the average days spent in a course for all students
-	cout << "Average days spent in a course for all students: \n";
+	cout << "Average days spent in a course for all students: \n" << endl;
 	for (int i = 0; i < numStudents; i++) {
 		roster->printAverageDaysInCourse(roster->getStudentData(i)->getStudentID());
 	}
+	cout << endl;
+
+	//Prints all students in the Software Degree Program
+	cout << "Displaying students in Software Degree Program:" << endl << endl;
+	roster->printByDegreeProgram(DegreeProgram::SOFTWARE);
+	cout << endl;
+
+	//Removes student A3 from the roster and displays updated roster
+	cout << "Removing student A3 from student roster:" << endl << endl;
+	roster->remove("A3");
+	cout << endl;
+	roster->printAll();
+	cout << endl;
+
+	//Attempts to remove student A3 again and displays failure message
+	cout << "Attempting to remove student A3 from student roster again:" << endl << endl;
+	roster->remove("A3");
+	cout << endl;
+
+	system("pause");
+	return 0;
 
 }

@@ -118,21 +118,17 @@ void Roster::add(string studentId, string firstName, string lastName, string ema
 }
 void Roster::remove(string studentId)
 {
-	bool found = false;
+	int currLastIndex = lastIndex;
 	for (int i = 0; i <= Roster::lastIndex; i++) {
 		if (classRosterArray[i]->getStudentID() == studentId)
 		{
-			found = true;
-			Student* temp = classRosterArray[i];
-			classRosterArray[i] = classRosterArray[maxSeats - 1];
-			classRosterArray[maxSeats - 1] = temp;
+			delete classRosterArray[i];
+			classRosterArray[i] = classRosterArray[lastIndex];
 			Roster::lastIndex--;
+			cout << "Student with Student ID " << studentId << " has been removed from Class Roster." << endl;
 		}
 	}
-	if (found) {
-		cout << "Student with Student ID " << studentId << " has been removed from Class Roster." << endl;
-	}
-	else {
+	if (currLastIndex == lastIndex) {
 		cout << "Student with Student ID " << studentId << " not found." << endl;
 	}
 }
@@ -170,5 +166,25 @@ void Roster::printInvalidEmails()
 		{	cout << classRosterArray[i]->getEmailAddress() << " - is invalid." << endl;
 
 		}
+	}
+}
+
+void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
+{
+	
+	for (int i = 0; i <= Roster::lastIndex; i++)
+	{
+		if (Roster::classRosterArray[i]->getDegreeProgram() == degreeProgram)
+		{
+			classRosterArray[i]->print();
+		}
+	}
+}
+
+Roster::~Roster() {
+	for (int i = 0; i < maxSeats; i++)
+	{
+		delete classRosterArray[i];
+		classRosterArray[i] == nullptr;
 	}
 }

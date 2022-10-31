@@ -30,4 +30,7 @@ public:
 	void printByDegreeProgram(DegreeProgram degreeProgram);
 
 
+	~Roster();
+
+
 };
