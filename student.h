@@ -10,32 +10,33 @@ private:
 	string firstName;
 	string lastName;
 	string emailAddress;
-	string studentAge;
-	double daysToComplete[daysArraySize];
+	int studentAge;
+	int daysToComplete[daysArraySize];
 	DegreeProgram degreeProgram;
 public:
 	Student();
 
-	Student(string studentId, string firstName, string lastName, string emailAddress, string studentAge, double daysToComplete[], DegreeProgram degreeProgram);
+	Student(string studentId, string firstName, string lastName, string emailAddress, int studentAge, int daysToComplete[], DegreeProgram degreeProgram);
+
 	~Student();
 
-	string getID();
+	//creating accessors (getters)
+	string getStudentID();
 	string getFirstName();
 	string getLastName();
 	string getEmailAddress();
-	string getStudentAge();
-	const double* getDaysToComplete();
+	int getStudentAge();
+	const int* getDaysToComplete();
 	DegreeProgram getDegreeProgram();
 
-	void setID(string studentId);
+	//creating mutators (setters)
+	void setStudentID(string studentId);
 	void setFirstName(string firstName);
 	void setLastName(string lastName);
 	void setEmailAddress(string emailAddress);
-	void setStudentAge(string studentAge);
-	void setDaysToComplete(const double daysToComplete[]);
+	void setStudentAge(int studentAge);
+	void setDaysToComplete(const int daysToComplete[]);
 	void setDegreeProgram(DegreeProgram degreeProgram);
-
-	static void printHeader();
 
 	void print();
 
